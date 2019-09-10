@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 22 11:23:35 2019
-
-@author: btpbd
-"""
-
 #%%
 def percentage(percent, decimal=0):
     # definition of a fucntion that returns  a % in str format'
@@ -57,36 +51,3 @@ end = time.time()
 print(end - start) 
 np.savetxt('prime.txt ', prime,fmt='%d')
 
-#%%
-df_prime= pd.DataFrame(prime) 
-df_prime['prime'] = df_prime[0]
-    #%%
-#%matplotlib qt 
-df_bar = pd.DataFrame()
-
-cat = 100
-df_bar['cat'] =  (df_prime['prime']/cat).apply(np.floor).drop_duplicates()
-df_bar['acc'] =  df_bar.index-2
-df_bar['count'] = (df_bar['acc']-df_bar['acc'].shift(periods=-1))*(-1)
-df_bar['ma'] =1
-for i in range(1,100) :
-    df_bar['ma'] = df_bar['ma']+ df_bar['count'].shift(periods=i) /(len ( range(1,100)))
-
-plt.fill_between( df_bar['cat'], df_bar['count'], color="skyblue", alpha=0.4)
-plt.fill_between( df_bar['cat'], df_bar['ma'], color="green", alpha=0.4)
-plt.show()
-plt.show()
-
-
-#if i%1000 == 0 :
-#            df_bar.loc[i/1000] = i/1000
-#            df_bar.loc[df_bar.index ==i/1000,'acc']=df_prime['prime'].count()
-#            df_bar['count'] =df_bar['acc']-df_bar['acc'].shift(periods=1)
-
-#plt.bar(df_bar.index, df_bar['acc'])
-#plt.show()
-
-    #%%
-
-
-#%%
