@@ -34,14 +34,10 @@ for i in range(2,n):
 
     counter = counter +1
     if (np.array(np.where(counter == 0))).size == 0 : # Condition to check if no counter has reset to 0 meaning  that this value is not counted in the counter , so we found one prime.
-        #writefile.write(str(y))+writefile.write(',')+writefile.write(str(i))+writefile.write(',')+ writefile.write('\n')#write it in the file
+       
         prime = np.append(prime,i) #
         counter = np.append(counter,-i)
-        #y=y+1
-        #df_prime.loc[y] =y 
-        #df_prime.loc[df_prime.index==y,'prime'] = i
-    
-        #print(percentage(i/n,2))
+        
     else : #if counter has reset to 0 , it means this values has been found , and counter should be rest to to orginal value
         p=np.where(counter==0 )
         counter[p]=counter[p]-prime[p] # Reset the counter for this specific to 0 
